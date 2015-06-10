@@ -11,6 +11,5 @@ if [ ! -e $DEPS ]; then
   echo y | android update sdk -u -a -t sys-img-x86-android-18 &&
   echo y | android update sdk --filter extra-android-support --no-ui --force &&
   echo y | android update sdk --filter extra-android-m2repository --no-ui --force &&
-  echo n | android create avd -n testing -f -t android-18 &&  
 touch $DEPS
 fi
