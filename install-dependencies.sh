@@ -5,11 +5,12 @@ DEPS="$ANDROID_HOME/installed-dependencies"
 
 if [ ! -e $DEPS ]; then
   cp -r /usr/local/android-sdk-linux $ANDROID_HOME &&
-  echo y | android update sdk -u -a -t android-16 &&
+  echo y | android update sdk -u -a -t android-22 &&
   echo y | android update sdk -u -a -t platform-tools &&
   echo y | android update sdk -u -a -t build-tools-22.0.1 &&
-  echo y | android update sdk -u -a -t sys-img-x86-android-16 &&
-  echo y | android update sdk -u -a -t addon-google_apis-google-16 &&
-  echo n | android create avd -n testing -f -t android-16 && --abi x86
-  touch $DEPS
+  echo y | android update sdk -u -a -t sys-img-x86-android-18 &&
+  echo y | android update sdk --filter extra-android-support --no-ui --force &&
+  echo y | android update sdk --filter extra-android-m2repository --no-ui --force &&
+  echo n | android create avd -n testing -f -t android-18 &&  
+touch $DEPS
 fi

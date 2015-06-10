@@ -16,4 +16,4 @@ test:
       parallel: true
   - ./wait.sh:
       parallel: true
-  - ./gradlew clean test connectedCheck --continue -PdisablePreDex
+  - ./gradlew clean test connectedCheck
