@@ -1,0 +1,19 @@
+machine:
+  environment:
+    ANDROID_HOME: /home/ubuntu/android
+
+dependencies:
+  cache_directories:
+    - ~/.android
+    - ~/android
+  override:
+    - ./install-dependencies.sh
+
+test:
+  override:
+  - $ANDROID_HOME/tools/emulator -avd testing -no-window -no-boot-anim -no-audio:
+      background: true
+      parallel: true
+  - ./wait.sh:
+      parallel: true
+  - ./gradlew clean test connectedCheck --continue -PdisablePreDex
